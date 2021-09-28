@@ -27,7 +27,7 @@ let Detail = (props) => {
   let idNum = props.coffee.find((thing) => {
     return thing.id == id;
   });
-  let history = useHistory();
+  let history = useHistory()sd;
 
   return (
     <div className="container">
