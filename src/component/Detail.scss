@@ -13,3 +13,12 @@ $mainColor: #ff0000;
   height: 100%;
   margin: auto;
 }
+
+.aniTab-enter {
+  opacity: 0;
+}
+
+.aniTab-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}

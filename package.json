@@ -1,5 +1,5 @@
 {
-  "homepage": "http://codingapple.com/blog",
+  "homepage": "http://codingapple.com",
   "name": "shop",
   "version": "0.1.0",
   "private": true,
@@ -13,8 +13,11 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-rc.0",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-transition-group": "^4.4.2",
+    "redux": "^4.1.1",
     "styled-components": "^5.3.1",
     "web-vitals": "^1.1.2"
   },
@@ -41,5 +44,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/codnjs779/react_shop.git",
+  "author": "codnjs779 <codnjs779@gmail.com>",
+  "license": "MIT"
 }

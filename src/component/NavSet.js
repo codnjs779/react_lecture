@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default (
   <Navbar bg="light" expand="lg">
     <Container>
-      <Navbar.Brand href="#home">커피샵</Navbar.Brand>
+      <Navbar.Brand href="#home">Shoes</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
@@ -12,7 +12,7 @@ export default (
             <Link to="/">Home</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/detail">Detail</Link>
+            <Link to="/">Detail</Link>
           </Nav.Link>
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

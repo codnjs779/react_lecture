@@ -1,40 +1,36 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import dataArr from "./data.js";
-import CoffeeList from "./component/CoffeeList";
+import ShoesList from "./component/ShoesList";
 import NavSet from "./component/NavSet";
 import Detail from "./component/Detail";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
+import Cart from "./component/Cart.js";
+import ShoesInfo from "./component/ShoesInfo";
+
+export let 재고Context = React.createContext();
 
 function App() {
-  let [coffee, coffeeSet] = useState(dataArr);
+  let [shoes, shoesSet] = useState(dataArr);
   let [stock, stockSet] = useState([10, 11, 12]);
   /*다른방식 라우터 짜기 {<Route path ="/내용" component = {MM}></Route>}*/
-
+  let history = useHistory();
   return (
-    <Switch>
-      <div className="App">
+    <div className="App">
+      <Switch>
         <Route exact path="/">
           {NavSet}
-          <div className="jumbo">
-            <h1>10% sale</h1>
-            <p>
-              더치커피 판매 중입니다. 500ml 부드럽게 차처럼 마실 수 있는
-              에티오피아 원두로 만들었습니다. 택배로 발송합니다.더치커피 판매
-              중입니다. 500ml 부드럽게 차처럼 마실 수 있는 에티오피아 원두로
-              만들었습니다. 택배로 발송합니다.더치커피 판매 중입니다. 500ml
-              부드럽게 차처럼 마실 수 있는 에티오피아 원두로 만들었습니다.
-              택배로 발송합니다.
-            </p>
-            <button>Select more</button>
-          </div>
+          <ShoesInfo />
           <div className="container">
-            <div className="row">
-              {coffee.map((element, i) => {
-                return <CoffeeList coffee={coffee[i]} />;
-              })}
-            </div>
+            <재고Context.Provider value={stock}>
+              <div className="row">
+                {shoes.map((element, i) => {
+                  return <ShoesList shoes={shoes[i]} i={i} key={i} />;
+                })}
+              </div>
+            </재고Context.Provider>
 
             <button
               className="moreBtn"
@@ -42,7 +38,7 @@ function App() {
                 axios //json -> obj로 자동변경해줌
                   .get("https://codingapple1.github.io/shop/data2.json")
                   .then((res) => {
-                    coffeeSet([...coffee, ...res.data]); //copy본 생성 대괄호 벗겨서 {}{}{}이런 형태로
+                    shoesSet([...shoes, ...res.data]); //copy본 생성 대괄호 벗겨서 {}{}{}이런 형태로
                   }, [])
                   .catch(() => {
                     console.log("실패!");
@@ -53,14 +49,20 @@ function App() {
             </button>
           </div>
         </Route>
-        <Route exact path="/detail">
-          정보 없는 페이지
-        </Route>
+
         <Route exact path="/detail/:id">
-          <Detail coffee={coffee} stock={stock} stockSet={stockSet} />
+          <재고Context.Provider value={stock}>
+            <Detail shoes={shoes} stock={stock} stockSet={stockSet} />
+          </재고Context.Provider>
         </Route>
-      </div>
-    </Switch>
+
+        <Route exact path="/:id"></Route>
+
+        <Route path="/cart">
+          <Cart>카트페이지 입니다</Cart>
+        </Route>
+      </Switch>
+    </div>
   );
 }
 

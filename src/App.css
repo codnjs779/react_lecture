@@ -3,8 +3,9 @@
 }
 
 .jumbo {
-  width: auto;
-  background-image: url("https://post.greatist.com/wp-content/uploads/sites/2/2020/01/GRT-different-coffee-cups-732x549-thumb.jpg");
+  width: 100%;
+  height: 100%;
+  background-image: url("https://codingapple.com/wp-content/uploads/2020/05/background.jpg");
   background-size: cover;
   color: aliceblue;
 }
